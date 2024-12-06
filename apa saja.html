@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Animation for Yulis</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffcccc, #ffe6e6);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+    text-align: center;
+    position: relative;
+}
+
+.container h1,
+.container .message,
+.container .button {
+    position: relative;
+    z-index: 2;
+}
+
+.heart {
+    z-index: 1;
+}
+
+        h1 {
+            font-size: 3rem;
+            color: #ff6f61;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .heart {
+            width: 100px;
+            height: 90px;
+            background: #ff6f61;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            animation: bounce 2s infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 100px;
+            height: 90px;
+            background: #ff6f61;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 50px;
+            top: 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 20px;
+            animation: fadeIn 5s ease-in-out;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: fadeIn 6s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #ff4d4d;
+        }
+
+    </style>
+    <script>
+        let messages = [
+    "Terima kasih telah menjadi bagian terindah dalam hidupku.",
+    "Maafkan aku jika selama ini ada kekurangan yang menyakitimu.",
+    "Aku berterima kasih atas kesabaranmu yang luar biasa.",
+    "Aku tahu aku tidak sempurna, tapi cintamu membuatku ingin menjadi lebih baik.",
+    "Terima kasih telah selalu mendukungku, bahkan di saat sulit.",
+    "Maafkan aku jika kadang aku tidak bisa menunjukkan betapa aku menghargaimu.",
+    "Aku bersyukur setiap hari karena memiliki kamu di hidupku.",
+    "Terima kasih telah menjadi tempat aku pulang, baik dalam tawa maupun air mata.",
+    "Maaf jika aku belum bisa menjadi yang terbaik untukmu, tapi aku akan terus mencoba.",
+    "Cintamu adalah anugerah yang tak ternilai untukku."
+];
+
+        let index = 0;
+
+        function nextMessage() {
+            index = (index + 1) % messages.length;
+            document.querySelector('.message').textContent = messages[index];
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="heart"></div>
+        <h1>For Yulis ❤️</h1>
+        <p class="message">"You're the beat of my heart."</p>
+        <button class="button" onclick="nextMessage()">Next</button>
+    </div>
+    <audio autoplay loop>
+        <source src="romantic_music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
